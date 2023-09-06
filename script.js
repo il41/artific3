@@ -28,8 +28,14 @@ function updateThemeColor() {
 updateThemeColor();
 
 
+document.addEventListener('DOMContentLoaded', function () {
+    let logo = document.getElementById("logo");
+    logo.addEventListener('click', updateThemeColor);
+  });
+
 
 document.addEventListener('DOMContentLoaded', function () {
+    
     // Get all elements with the class "arrow"
     const arrowDivs = document.querySelectorAll('.arrow');
     
