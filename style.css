@@ -209,6 +209,20 @@ html {
     display: inline;    
     /* font-size:0; */
 }
+.ascii-art-container
+{
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-around; /* Add this line */
+}
+.ascii-art
+{
+    /* background-color:red; */
+    display: inline;
+    /* float:left; */
+    /* font-family:monospace; */
+    /* white-space: pre-wrap; */
+}
 
 header {
     background: var(--theme-color-1);
@@ -451,12 +465,13 @@ aside>div>img {
     margin-top: 0.5em;
     list-style: none;
     /* width: 90%; */
-    /* text-indent: -30px; */
+    /* text-indent: -40px; */
     margin-left: 0px;
 }
 
 .services li {
     list-style-type: disc;
+    /* list-style-type: none; */
     padding-left: none;
     margin-top: 4px;
 

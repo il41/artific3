@@ -79,14 +79,15 @@ document.addEventListener('DOMContentLoaded', function () {
         arrowSpeed = parseInt(speedClass.replace('speed-', ''), 10);
       }
   
-      // Check for the direction-right class
-      if (arrowDiv.classList.contains('direction-right')) {
-        arrowDirection = 'right';
-      }
-  
       const dashes = createDashes(arrowSize);
       let arrow = '>';
       let counter = arrowOffset;
+
+      // Check for the direction-right class
+      if (arrowDiv.classList.contains('direction-right')) {
+        arrowDirection = 'right';
+        arrow = '<';
+      }
   
       // Set an interval to update the arrow animation
       const intervalId = setInterval(() => {
