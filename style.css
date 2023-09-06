@@ -206,7 +206,7 @@ html {
 }
 
 .arrow {
-    display: inline;
+    display: inline;    
     /* font-size:0; */
 }
 
@@ -241,6 +241,7 @@ footer {
 
 footer p {
     padding: 20px;
+    padding-bottom:10px;
     /* padding-bottom:10px;
     padding-top:10px; */
 }
