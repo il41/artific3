@@ -109,5 +109,42 @@ document.addEventListener('DOMContentLoaded', function () {
   
     // Call the animateArrow function for each arrow
     arrowDivs.forEach(animateArrow);
+
   });
   
+
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    const messages = ["Hello!","hello!","Hi!","hi!", "howdy", "Hi", "¡hola!","¡Hola!","përshëndetje", "ሃይ", "أهلاً", "Ողջու՜յն", "নমস্কাৰ", "Kamisaki", "salam", "aw ni baara", "hi", "прывітанне", "ওহে", "एहो", "zdravo", "здрасти", "hola", "hi", "moni", "你好", "你好", "Salute", "bok", "Ahoj", "Hej", "އައްސަލާމް ޢަލައިކުމް", "नमस्ते", "Hoi", "hi", "saluton", "Tere", "Tere", "Alekee", "hi", "Hei", "Salut", "Hoi", "ola", "გამარჯობა", "Hi", "γεια", "Mba'éichapa", "હાય", "alo", "sannu", "Hui", "היי", "नमस्ते", "nyob zoo", "Szia", "hæ", "ndewo", "Hi", "Hai", "Haigh", "CIAO", "こんにちは", "hi", "ನಮಸ್ತೆ", "сәлем", "សួស្តី", "muraho", "हाय", "안녕", "kushɛ", "Merheba", "سڵاو", "Салам", "ສະບາຍດີ", "Salve", "Sveiki", "Mbote", "labas", "Nkulamusizza", "Salut", "здраво", "नमस्कार", "salut", "hai", "ഹായ്", "hi", "hi", "हाय", "ꯍꯥꯏ", "Chibai", "сайн уу", , "ဟိုင်း", "नमस्ते", "hei", "ନମସ୍କାର", "Akkam", "سلام", "سلام", "Cześć", "oi", "ਹੈਲੋ", "Allinllachu", "Bună", "привет", "malo", "नमस्कार", "Hi", "Thobela", "Здраво", "dumela", "Mhoro", "سلام", "හායි", "Ahoj", "živjo", "hi", "Hola", "hi", "habari", "Hej", "салом", "வணக்கம்", "сәлам", "హాయ్", "สวัสดี", "ሰላም", "Xewani", "MERHABA", "salam", "Hi", "Привіт", "ہیلو", "hi", "salom", "CHÀO", "helo", "Mholo", "הי", "hi", "sawubona"]
+    const additionalContent = "->"; 
+    const arrows = document.querySelectorAll('.arrowM');
+
+    arrows.forEach(arrow => {
+        const size = parseInt(arrow.classList[2].split('-')[1]); // Extract size from class
+        const offset = parseInt(arrow.classList[3].split('-')[1]); // Extract offset from class
+        const speed = parseInt(arrow.classList[4].split('-')[1]); // Extract speed from class
+
+        let animationFrame = offset;
+        let currentMessage = messages[Math.floor(Math.random() * messages.length)] + additionalContent;
+
+        function animateMessage() {
+            let frame = '';
+            for (let i = 0; i < size; i++) {
+                if (i >= animationFrame) {
+                    frame += currentMessage[i - animationFrame] || '-';
+                } else {
+                    frame += '-';
+                }
+            }
+            arrow.textContent = frame;
+            animationFrame = (animationFrame + 1) % (size + 1);
+
+            if (animationFrame === 0) {
+                currentMessage = messages[Math.floor(Math.random() * messages.length)] + additionalContent; // Change message on restart
+            }
+        }
+
+        setInterval(animateMessage, speed);
+    });
+});
+

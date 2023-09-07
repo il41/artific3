@@ -95,7 +95,7 @@
     background: transparent
 }
 
-body {
+body,html {
     font-family: sans-serif;
     overflow-x: hidden;
 }
@@ -212,16 +212,39 @@ html {
 .ascii-art-container
 {
     display: flex;
+    /* justify-content: center; */
+    /* align-items: left; */
     /* align-items: center; */
-    justify-content: space-around; /* Add this line */
+    /* justify-content: space-around; */
+    /* background-color: var(--theme-color-1); */
+    padding-bottom:40px;
+    border-radius:10px;
+    /* border: 1px var(--theme-color-3) solid; */
+    gap:10px;
 }
 .ascii-art
 {
+    /* background-color: red; */
+    /* width:300px; */
+    line-height: 1.25;
     /* background-color:red; */
     display: inline;
-    /* float:left; */
-    /* font-family:monospace; */
+    /* text-align:center; */
+    font-family:monospace;
     /* white-space: pre-wrap; */
+    /* color:var(--theme-color-2); */
+    min-width:200px;
+    margin:auto;
+
+}
+.ascii-art-container div {
+    /* margin-left:10px; */
+}
+
+.under-construction
+{
+    /* overflow-x: hidden; */
+    /* font-size: monospace; */
 }
 
 header {
@@ -249,7 +272,7 @@ footer {
 }
 
 .footer-content {
-    width: 1000px;
+    max-width: 1000px;
     margin: auto;
 }
 
@@ -283,6 +306,17 @@ main a:visited {
     z-index: -1px;
     margin-top: 1px;
     width: 300%;
+}
+.white-line-vert {
+    /* width:100%; */
+    border-right: 1px var(--theme-color-2) solid;
+    z-index: -10px;
+    margin-top: 1px;
+    /* width: 1000px; */
+    position:relative;
+    float:right;
+    /* height:1000px; */
+    top:0px;
 }
 
 nav {
@@ -552,6 +586,14 @@ body>section {
         padding: 30px 20px;
         padding-top: 0px;
     }
+
+    .ascii-art
+    {
+        /* font-size:8px; */
+        font-size:1.4vw;
+        min-width:130px;
+        white-space: nowrap
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -581,6 +623,15 @@ body>section {
         /* width:100%; */
         /* vertical-align: middle; */
         /* margin-right: 10px; */
+    }
+    .ascii-art
+    {
+        font-size:10px;
+        min-width:130px;
+    }
+    .ascii-art-container
+    {
+        gap: 10px;
     }
 
 }
