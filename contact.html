@@ -15,7 +15,7 @@
 	<header>
 		<!-- <div class="white-line-vert"></div> -->
 		<div class="header-content">
-			<div id="logo"><img alt="Artific3 LLC" src="images/logos/logo2.png"></div>
+			<div id="logo"><img class="invertable" alt="Artific3 LLC" src="images/logos/logo2.png"></div>
 			<strong class="subtitle">Your new favorite Interactive Art and Technology team.</strong>
 			<nav id="main-nav">
 				<ul class="nopad">
@@ -114,11 +114,12 @@
 			</div>
 		</main>
 		<aside>
-			<div style="overflow:hidden;" class="sidebar-img">
+			<div style="overflow:hidden;" class="sidebar-img contact-copy">
 				<!-- <img src="images/rez/bg_01.gif"> -->
-				<img  style="width:1000px; overflow:hidden; position:relative; left:-400px;" src="images/game-screenshots/smart8.PNG">
+				<img style="width:200%; overflow:hidden; position:relative; left:-200px;"
+					src="images/game-screenshots-web/8.jpg">
 				<!-- <img  style="width:1000px; overflow:hidden; position:relative; left:-400px;" src="images/game-screenshots/smartcityscreenshot1.jpg"> -->
-				<div>Get in touch!</div>
+				<div class="contact-copy-msg">Get in touch!</div>
 			</div>
 			<!-- <div>Sidebar 2</div>
 			<div>Sidebar 3</div> -->
@@ -128,12 +129,30 @@
 		<div class="footer-content">
 			<p><i class="gradient-animation">website created by Artific3</i></p>
 			<p class="copyright">&copy; Artific3 LLC 2023</p>
-
-			<!-- <p>Dark Mode</p> -->
+			<p><a href="#" id="toggle-dark-mode">Toggle Dark Mode</a></p>
 		</div>
 	</footer>
 
+	<script>
+		const contactCopy = document.querySelector('.contact-copy');
+		const contactCopyMsg = document.querySelector('.contact-copy-msg');
 
+		contactCopy.addEventListener('click', function () {
+			const email = 'artific3.designers@gmail.com';
+
+			const tempTextarea = document.createElement('textarea');
+			tempTextarea.value = email;
+			tempTextarea.style.position = 'fixed';
+			document.body.appendChild(tempTextarea);
+
+			tempTextarea.select();
+			document.execCommand('copy');
+
+			document.body.removeChild(tempTextarea);
+
+			contactCopyMsg.textContent = 'Email copied to clipboard!';
+		});
+	</script>
 </body>
 
 </html>

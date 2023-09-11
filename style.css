@@ -279,7 +279,7 @@ footer {
 }
 
 footer p {
-    padding: 20px;
+    /* padding: 20px; */
     padding-bottom: 10px;
     /* padding-bottom:10px;
     padding-top:10px; */
@@ -424,6 +424,24 @@ main {
     min-height: 700px;
 }
 
+.dark-mode{
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+    -moz-filter: invert(100%);
+    -o-filter: invert(100%);
+    -ms-filter: invert(100%); 
+}
+/* .dark-mode .invertable {
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+    -moz-filter: invert(100%);
+    -o-filter: invert(100%);
+    -ms-filter: invert(100%); 
+} */
+
+#toggle-dark-mode{
+    /* margin-right:20px; */
+}
 .cont-exhibits>article {
     /* float:left; */
     /* width:60%; */
@@ -475,6 +493,11 @@ article h2 {
     top: -3px;
     color: black;
     /* color:var(--theme-color-2) */
+
+}
+
+.contact-copy-msg {
+    color: var(--theme-color-2) !important;
 }
 
 aside a,
@@ -564,45 +587,45 @@ aside a:visited {
     /* width:100%; */
 }
 
-.exhibit-img-div-banner{
-    display:flex;
+.exhibit-img-div-banner {
+    display: flex;
     justify-content: space-around;
     vertical-align: baseline;
     flex-wrap: wrap;
     /* padding-left:0.75vw; */
     /* margin:auto; */
-    width:100%;
+    width: 100%;
     /* background:blue; */
-    
+
 }
 
-.exhibit-img-div-banner img{
-    width:100%;
-    display:inline;
-    transform:scale(1.4);
-    margin:auto;
+.exhibit-img-div-banner img {
+    width: 100%;
+    display: inline;
+    transform: scale(1.4);
+    margin: auto;
 }
 
-.exhibit-img-div-banner div{
+.exhibit-img-div-banner div {
     overflow: hidden;
     /* padding:10px; */
-    display:inline-block;
+    display: inline-block;
     /* max-width:300px; */
     border-radius: 10px;
-    width:24%;
-    background:blue;
-    margin-bottom:20px;
+    width: 24%;
+    background: blue;
+    margin-bottom: 20px;
 }
 
 .exhibit-img-div img {
     max-width: 100%;
     /* max-width:100px; */
     /* max-height:700px; */
-    margin:auto;
+    margin: auto;
     display: block;
-    background:var(--theme-color-1);
+    background: var(--theme-color-1);
     /* padding:30px; */
-    border-radius:10px;
+    border-radius: 10px;
     /* margin-top:50px; */
 }
 
@@ -615,13 +638,13 @@ aside a:visited {
 }
 
 .left {
-    float:left;
-    width:50%;
+    float: left;
+    width: 50%;
 }
 
 .right {
-    float:right;
-    width:50%;
+    float: right;
+    width: 50%;
 }
 
 /* * {-webkit-font-smoothing: antialiased;} */
@@ -775,8 +798,8 @@ body>section {
         gap: 10px;
     }
 
-    .exhibit-img-div-banner div{
-        width:45%;
+    .exhibit-img-div-banner div {
+        width: 45%;
 
     }
 

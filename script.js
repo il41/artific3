@@ -17,7 +17,7 @@ function updateThemeColor() {
   const randomLight = getRandomNumber(0, 100) + "%";
   const randomColor = selectColor(getRandomNumber(0, 360));
   const randomColor2 = selectColor(getRandomNumber(0, 360));
-  
+
   // Set --theme-color-1
   root.style.setProperty('--theme-color-1', `${randomColor}`);
 
@@ -175,5 +175,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
     setInterval(animateMessage, speed);
   });
+});
+
+
+
+// Function to toggle dark mode
+function toggleDarkMode() {
+  document.documentElement.classList.toggle('dark-mode');
+  // Store the current mode in localStorage
+  const isDarkMode = document.documentElement.classList.contains('dark-mode');
+  localStorage.setItem('darkMode', isDarkMode);
+}
+
+// Event listener for the toggle link
+document.addEventListener('DOMContentLoaded', function () {
+  const toggleLink = document.querySelector('#toggle-dark-mode');
+
+  if (toggleLink) {
+    toggleLink.addEventListener('click', function (event) {
+      event.preventDefault();
+      toggleDarkMode();
+      document.querySelectorAll("img").forEach((e) => {
+        if (!e.classList.contains('invertable')) {
+          e.classList.toggle('dark-mode');
+        }
+      })
+    });
+  }
+
+  // Check if dark mode was enabled on previous visit
+  const isDarkMode = localStorage.getItem('darkMode');
+  if (isDarkMode === 'true') {
+    document.documentElement.classList.add('dark-mode');
+    document.querySelectorAll("img").forEach((e) => {
+      if (!e.classList.contains('invertable')) {
+        e.classList.add('dark-mode');
+      }
+    })
+  }
 });
 
