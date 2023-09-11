@@ -46,8 +46,8 @@ function hslToComplementary(h, s, l) {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  let logo = document.getElementById("logo");
-  logo.addEventListener('click', updateThemeColor);
+  let themeButton = document.getElementById("toggle-theme");
+  themeButton.addEventListener('click', updateThemeColor);
 });
 
 
@@ -182,9 +182,9 @@ document.addEventListener('DOMContentLoaded', function () {
 // Function to toggle dark mode
 function toggleDarkMode() {
   document.documentElement.classList.toggle('dark-mode');
-  // Store the current mode in localStorage
+  // Store the current mode in localStorage or sessionStorage
   const isDarkMode = document.documentElement.classList.contains('dark-mode');
-  localStorage.setItem('darkMode', isDarkMode);
+  sessionStorage.setItem('darkMode', isDarkMode);
 }
 
 // Event listener for the toggle link
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Check if dark mode was enabled on previous visit
-  const isDarkMode = localStorage.getItem('darkMode');
+  const isDarkMode = sessionStorage.getItem('darkMode');
   if (isDarkMode === 'true') {
     document.documentElement.classList.add('dark-mode');
     document.querySelectorAll("img").forEach((e) => {
