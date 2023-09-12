@@ -184,7 +184,7 @@ function toggleDarkMode() {
   document.documentElement.classList.toggle('dark-mode');
   // Store the current mode in localStorage or sessionStorage
   const isDarkMode = document.documentElement.classList.contains('dark-mode');
-  sessionStorage.setItem('darkMode', isDarkMode);
+  localStorage.setItem('darkMode', isDarkMode);
 }
 
 // Event listener for the toggle link
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Check if dark mode was enabled on previous visit
-  const isDarkMode = sessionStorage.getItem('darkMode');
+  const isDarkMode = localStorage.getItem('darkMode');
   if (isDarkMode === 'true') {
     document.documentElement.classList.add('dark-mode');
     document.querySelectorAll("img").forEach((e) => {
