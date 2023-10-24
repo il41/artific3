@@ -642,6 +642,7 @@ aside a:visited {
     margin-bottom: 20px;
     font-size: 100px;
     font-size: 6vw;
+    font-size: 100px;
     /* text-align: center; */
 }
 
@@ -766,6 +767,18 @@ footer a:visited {
     color: var(--theme-color-4);
 }
 
+.negative{
+    filter: invert(100%);
+}
+.animated-icon{
+    margin-top:-100px;
+    /* padding-right:5vw; */
+    float:right;
+    display: inline;
+    /* height:20px; */
+    overflow: hidden;
+}
+
 @keyframes email-pulse {
     0%{
         color:black;
@@ -846,6 +859,14 @@ footer a:visited {
     }
     nav ul li {
         margin-right:15px;
+    }
+
+    .exhibit-title {
+        font-size: 10vw;
+        /* text-align: center; */
+    }
+    .exhibit-title-2 {
+        font-size: 9vw;
     }
 
 }
