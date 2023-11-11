@@ -41,6 +41,49 @@ function hslToComplementary(h, s, l) {
 }
 
 
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll(".expand-img").forEach(element => {
+    element.addEventListener('click', (event) => {
+      // Prevent the default click behavior
+      event.preventDefault();
+
+      // Get the banner element of the clicked image
+      const banner = element.closest('.exhibit-img-div-banner');
+
+      // Toggle 'expanded' class for the clicked element within its banner
+      element.classList.toggle('expanded');
+      element.classList.remove('shrink');
+
+      // Remove 'expanded' class from other elements within the same banner
+      banner.querySelectorAll(".expand-img").forEach(other => {
+        if (other != element) {
+          if(element.classList.contains("expanded")){
+            other.classList.remove('expanded');
+            other.classList.add('shrink');
+          } else {
+            other.classList.remove('expanded');
+            other.classList.remove('shrink');
+          }
+
+        }
+      });
+    });
+  });
+
+  // Add event listener to close expanded images when clicking anywhere else on the page
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.expand-img')) {
+      document.querySelectorAll(".expand-img").forEach(element => {
+        element.classList.remove('expanded');
+        element.classList.remove('shrink');
+      });
+    }
+  });
+});
+
+
+
+
 
 
 
@@ -185,6 +228,16 @@ function toggleDarkMode() {
   // Store the current mode in localStorage or sessionStorage
   const isDarkMode = document.documentElement.classList.contains('dark-mode');
   localStorage.setItem('darkMode', isDarkMode);
+  document.querySelectorAll("img").forEach((e) => {
+    if (!e.classList.contains('invertable')) {
+      e.classList.toggle('dark-mode');
+    }
+  })
+  document.querySelectorAll('iframe').forEach((e)=>{
+    if (!e.classList.contains('invertable')) {
+      e.classList.toggle('dark-mode');
+    }
+  })
 }
 
 // Event listener for the toggle link
@@ -195,23 +248,13 @@ document.addEventListener('DOMContentLoaded', function () {
     toggleLink.addEventListener('click', function (event) {
       event.preventDefault();
       toggleDarkMode();
-      document.querySelectorAll("img").forEach((e) => {
-        if (!e.classList.contains('invertable')) {
-          e.classList.toggle('dark-mode');
-        }
-      })
     });
   }
 
   // Check if dark mode was enabled on previous visit
   const isDarkMode = localStorage.getItem('darkMode');
   if (isDarkMode === 'true') {
-    document.documentElement.classList.add('dark-mode');
-    document.querySelectorAll("img").forEach((e) => {
-      if (!e.classList.contains('invertable')) {
-        e.classList.add('dark-mode');
-      }
-    })
+    toggleDarkMode();
   }
 });
 
