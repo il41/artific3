@@ -890,6 +890,35 @@ footer a:visited {
     height:100%;
 }
 
+.tv-antenna{
+    text-align: center;
+    margin-bottom: -20px;
+}
+.tv-antenna img {
+    width:70%;
+}
+.tv{
+    background-color: black;
+    border:black 10px solid;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-radius:30px;
+    padding:0px;
+}
+.tv iframe{
+    border-radius: 20px;
+}
+
+.tv-bottom{
+    text-align: center;
+    margin-top: -30px;
+}
+.tv-bottom img{
+    width:100%;
+}
+
 @media screen and (max-width: 1000px) {
     body>section {
         padding: 30px 20px;
