@@ -25,7 +25,7 @@ function updateThemeColor() {
   const computedStyle = getComputedStyle(root);
   const themeColor1 = computedStyle.getPropertyValue('--theme-color-1');
 
-  root.style.setProperty('--theme-color-4', hslToComplementary(themeColor1));
+  root.style.setProperty('--theme-color-4', hslToComplementary(randomHue,randomSat,randomLight));
 }
 
 
@@ -33,12 +33,26 @@ function updateThemeColor() {
 updateThemeColor();
 
 
-function hslToComplementary(h, s, l) {
+// function hslToComplementary(h, s, l) {
+//   // Adjust the hue by 180 degrees
+//   h = (h + 180) % 360;
+
+//   return { h, s, l };
+// }
+
+function hslToComplementary(h, s, l, cssString = false) {
   // Adjust the hue by 180 degrees
   h = (h + 180) % 360;
 
-  return { h, s, l };
+  // Ensure the values are within the valid range
+  h = (h < 0) ? 360 + h : h;
+  s = Math.max(0, Math.min(100, s));
+  l = Math.max(0, Math.min(100, l));
+
+  // Return the HSL object or CSS color string based on the parameter
+  return cssString ? `hsl(${h}, ${s}%, ${l}%)` : { h, s, l };
 }
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -228,6 +242,11 @@ function toggleDarkMode() {
   // Store the current mode in localStorage or sessionStorage
   const isDarkMode = document.documentElement.classList.contains('dark-mode');
   localStorage.setItem('darkMode', isDarkMode);
+  document.querySelectorAll("*").forEach((e) => {
+    if (e.classList.contains('uninvertable')) {
+      e.classList.toggle('dark-mode');
+    }
+  })
   document.querySelectorAll("img").forEach((e) => {
     if (!e.classList.contains('invertable')) {
       e.classList.toggle('dark-mode');

@@ -4,7 +4,7 @@
     --theme-color-2: rgb(255, 255, 255);
     --theme-color-3: #333;
     --theme-color-4: #ff0000;
-    --dynamic-a-tag: #00ff00;
+    --dynamic-a-tag: #00ff00
 }
 
 /* Rubik-Regular.ttf */
@@ -522,7 +522,18 @@ aside a:visited {
 
 .artist-profile a,
 .artist-profile a:visited {
+    text-decoration: underline;
     color: var(--dynamic-a-tag);
+    color: #f0f;
+    background-color: #fff;
+    padding:1px;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius:5px;
+    transition:background-color 0.2s linear;
+}
+.artist-profile a:hover{
+    background-color:#0f0;
 }
 
 .artist-img {
@@ -557,10 +568,14 @@ aside a:visited {
 
 .artist-img p {
     text-align: left;
+    margin-left:2px;
     color: var(--theme-color-2);
     padding-left: 5px;
     position: absolute;
     top: 255px;
+    /* background-color:#000; */
+    padding:1px;
+    border-radius:5px;
 }
 
 .artist-profile>h3 {
