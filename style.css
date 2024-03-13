@@ -1,6 +1,7 @@
 :root {
     /* --theme-color-1: #AEC6CF; */
     --theme-color-1: hsl(170, 58%, 54%);
+    --theme-color-1-transparent: hsl(170, 58%, 54%,0.5);
     --theme-color-2: rgb(255, 255, 255);
     --theme-color-3: #333;
     --theme-color-4: #ff0000;
@@ -500,7 +501,7 @@ article h2 {
     position: relative;
     top: -3px;
     color: black;
-    /* color:var(--theme-color-2) */
+    color:var(--theme-color-2)
 
 }
 
@@ -610,8 +611,32 @@ aside a:visited {
     width:100%; */
 }
 
+.denizen-banner{
+    
+}
 
-.exhibit-img-div-banner {
+.denizen-banner img {
+    width: 20%;
+    height:20%;
+    /* display: inline; */
+    /* transform: scale(0.4); */
+    /* margin: auto; */
+    border-radius: 20px;
+}
+
+.denizen-banner{
+    display: flex;
+    justify-content: space-around;
+    vertical-align: baseline;
+    flex-wrap:nowrap;
+    /* padding-left:0.75vw; */
+    /* margin:auto; */
+    width: 100%;
+    /* background:blue; */
+    margin-bottom:5px;
+}
+
+.exhibit-img-div-banner{
     display: flex;
     justify-content: space-around;
     vertical-align: baseline;
@@ -642,11 +667,67 @@ aside a:visited {
     /* background: blue; */
     margin-bottom: 20px;
     transition: all 0.4s ease-in-out;
-    z-index:1;
+    /* z-index:1; */
     display: inline;
-    z-index: 5;
+    /* z-index: 5; */
     height:100%;
 }
+
+.img-enlarged {
+    transform: scale(6);
+    position: fixed;
+    /* top: 50%; */
+    /* left: 50%; */
+    transform: translate(-50%, -50%) scale(6);
+    /* z-index: 1000; Adjust the z-index as needed */
+}
+
+@keyframes overlay-bg {
+    0% {
+        background-size: 1% 1%;
+        /* background-position:50%,0%; */
+    }
+    50% {
+        /* background-size: 15% 15%; */
+        /* background-position:50%; */
+    }
+    100% {
+        background-size: 1% 1%;
+        background-position:50%,0%;
+    }
+}
+
+.overlay {
+    background-position:center;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    --color-one: var(--theme-color-1);
+    /* --color-two: hsl(0, 0%, 0%, 0); */
+    --color-two: hsla(0, 0%, 0%, 0);
+    background: radial-gradient(circle at center, 
+        var(--color-one) 0%, 
+        var(--color-one) 20%, 
+        var(--color-two) 20%, 
+        var(--color-two) 100%
+    );
+    animation: overlay-bg 60s infinite linear; /* Adjust animation duration as needed */
+}
+
+
+.overlay img {
+    max-width: 80%;
+    max-height: 80%;
+    border: 2px solid white; /* Optional border */
+    border-radius: 20px; /* Optional border-radius */
+    background-color: rgba(255, 255, 255,0.2);
+}
+
 
 .exhibit-img-div-banner div.expanded{
     z-index: 10;

@@ -21,12 +21,18 @@ function updateThemeColor() {
   // Set --theme-color-1
   root.style.setProperty('--theme-color-1', `${randomColor}`);
 
+  // Set --theme-color-1-transparent with alpha 0.5
+  const hslaColor = `hsla(${randomHue}, ${randomSat}, ${randomLight}, 0.5)`;
+  root.style.setProperty('--theme-color-1-transparent', hslaColor);
+
   // Get the computed style of --theme-color-1
   const computedStyle = getComputedStyle(root);
   const themeColor1 = computedStyle.getPropertyValue('--theme-color-1');
 
+  // Set --theme-color-4 using complementary color of --theme-color-1
   root.style.setProperty('--theme-color-4', hslToComplementary(randomHue,randomSat,randomLight));
 }
+
 
 
 // Call the updateThemeColor function initially to set the initial color when the page loads
@@ -54,46 +60,100 @@ function hslToComplementary(h, s, l, cssString = false) {
 }
 
 
-
 document.addEventListener('DOMContentLoaded', function () {
+  // Function to handle image click event
+  const handleImageClick = (element) => {
+    // Prevent the default click behavior
+    event.preventDefault();
+
+    // Create overlay element
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+
+    // Create image element in overlay
+    const enlargedImage = document.createElement('img');
+    enlargedImage.src = element.src; // Use the src of the clicked image directly
+    overlay.appendChild(enlargedImage);
+
+    // Check if dark mode is enabled and invert overlay image if necessary
+    const isDarkMode = document.documentElement.classList.contains('dark-mode');
+    if (isDarkMode) {
+      enlargedImage.classList.add('negative');
+      enlargedImage.style="background-color:rgba(255,255,255,0.8);"
+    }
+
+    // Append overlay to the body
+    document.body.appendChild(overlay);
+
+    // Show overlay
+    overlay.style.display = 'flex';
+
+    // Close overlay when clicked anywhere
+    overlay.addEventListener('click', () => {
+      overlay.style.display = 'none';
+      // Remove overlay element
+      overlay.remove();
+    });
+  };
+
+  // Attach click event listener to elements with class "expand-img"
   document.querySelectorAll(".expand-img").forEach(element => {
     element.addEventListener('click', (event) => {
-      // Prevent the default click behavior
-      event.preventDefault();
-
-      // Get the banner element of the clicked image
-      const banner = element.closest('.exhibit-img-div-banner');
-
-      // Toggle 'expanded' class for the clicked element within its banner
-      element.classList.toggle('expanded');
-      element.classList.remove('shrink');
-
-      // Remove 'expanded' class from other elements within the same banner
-      banner.querySelectorAll(".expand-img").forEach(other => {
-        if (other != element) {
-          if(element.classList.contains("expanded")){
-            other.classList.remove('expanded');
-            other.classList.add('shrink');
-          } else {
-            other.classList.remove('expanded');
-            other.classList.remove('shrink');
-          }
-
-        }
-      });
+      // Check if the clicked element is an image
+      if (event.target.tagName === 'IMG') {
+        handleImageClick(event.target);
+      }
+      // Check if the clicked element contains an image
+      else if (event.target.querySelector('img')) {
+        handleImageClick(event.target.querySelector('img'));
+      }
     });
   });
+});
+
+
+
+
+//original expand-shrink banner logic
+// document.addEventListener('DOMContentLoaded', function () {
+//   document.querySelectorAll(".expand-img").forEach(element => {
+//     element.addEventListener('click', (event) => {
+//       // Prevent the default click behavior
+//       event.preventDefault();
+
+//       // Get the banner element of the clicked image
+//       const banner = element.closest('.exhibit-img-div-banner');
+
+//       // Toggle 'expanded' class for the clicked element within its banner
+//       element.classList.toggle('expanded');
+//       element.classList.remove('shrink');
+
+//       // Remove 'expanded' class from other elements within the same banner
+//       banner.querySelectorAll(".expand-img").forEach(other => {
+//         if (other != element) {
+//           if(element.classList.contains("expanded")){
+//             other.classList.remove('expanded');
+//             other.classList.add('shrink');
+//           } else {
+//             other.classList.remove('expanded');
+//             other.classList.remove('shrink');
+//           }
+
+//         }
+//       });
+//     });
+//   });
 
   // Add event listener to close expanded images when clicking anywhere else on the page
-  document.addEventListener('click', (event) => {
-    if (!event.target.closest('.expand-img')) {
-      document.querySelectorAll(".expand-img").forEach(element => {
-        element.classList.remove('expanded');
-        element.classList.remove('shrink');
-      });
-    }
-  });
-});
+//   document.addEventListener('click', (event) => {
+//     if (!event.target.closest('.expand-img')) {
+//       document.querySelectorAll(".expand-img").forEach(element => {
+//         element.classList.remove('expanded');
+//         element.classList.remove('shrink');
+//       });
+//     }
+//   });
+// });
 
 
 
