@@ -725,7 +725,7 @@ aside a:visited {
     max-height: 80%;
     border: 2px solid white; /* Optional border */
     border-radius: 20px; /* Optional border-radius */
-    background-color: rgba(255, 255, 255,0.2);
+    background-color: rgb(237, 246, 255);
 }
 
 
