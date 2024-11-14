@@ -599,6 +599,94 @@ aside a:visited {
     width: 40%;
 }
 
+.projects div img{
+    width:100%;
+}
+
+.project-link
+{
+    border-radius: 20px;
+    padding:20px;
+    background-color: white;
+    border:10px solid;
+    border-color: var(--theme-color-1);
+    /* background: linear-gradient(90deg, rgba(255,255,255,1) 0%, var(--theme-color-1) 100%); */
+    background-color: white;
+    /* background-color: lightblue; */
+    /* color:blavk; */
+    max-width: 800px;
+    /* width:400px; */
+    /* width:50vw; */
+    margin:auto;
+    margin-bottom:40px;
+    /* margin-top:40px; */
+    animation: spingrad 1s linear infinite;
+    transition:background-color 1s ease;
+    transition:color 1.5 ease;
+    color: #000;
+    font-size:14px;
+}
+.project-link:hover{
+    /* background: linear-gradient(90deg, rgba(255,255,255,1) 90%, var(--theme-color-1) 100%); */
+    background-color:var(--theme-color-1);
+    color: #fff;
+}
+.project-link h2 {
+    font-size:24px;
+    display:inline-block;
+    margin-bottom:5px;
+    text-decoration: underline;
+    color: var(--dynamic-a-tag);
+    color: #000;
+    background-color: #ffffff;
+    padding:1px;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius:5px;
+    transition:background-color 0.2s linear;
+}
+
+.projects a,
+.projects a:visited {
+    text-decoration: none;
+}
+
+.project-link img {
+    text-align: center;
+    width: 100%;
+    border-radius: 20px;
+    /* padding:20px; */
+    /* float:center; */
+    /* max-height: 500px; */
+}
+
+.iframe-container {
+    border-radius: 20px;
+    position: relative;
+    background-color: var(--theme-color-1);
+    width: 100%;
+    /* min-width: 500px; */
+    padding-top: 56.25%; 
+    padding-top:60%;
+    transform: scale(100vw);
+  }
+  
+  /* Center and scale the iframe */
+  .responsive-iframe {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    width: 150%; /* Original width */
+    height: 150%; /* Original height */
+    transform: scale(0.75) translate(-50%, -50%); /* Scale down and center */
+    transform-origin: 0 0; /* Start scaling from the top left */
+    border: none; /* Optional */
+  }
+  @media (max-width: 1000px) {
+    .responsive-iframe {
+      transform: scale(0.65) translate(-50%, -50%); /* Adjust scale for smaller screens */
+    }
+  }
 
 .exhibit-img-div {
     /* width:500px;
